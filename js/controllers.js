@@ -12,20 +12,38 @@ shoppingCartApp.controller('CartController', ['$scope', function($scope) {
     //     $scope.items.splice(index, 1);
     // }
 
-    $scope.totalCart = function() {
-        var total = 0;
+    // $scope.totalCart = function() {
+    //     var total = 0;
+    //     for (var i = 0; i < $scope.items.length; i++) {
+    //         total += $scope.items[i].price * $scope.items[i].quantity;
+    //     }
+    //     return total;
+    // };
+
+    // $scope.subtotal = function() {
+    //     return $scope.totalCart() - $scope.bill.discount;
+    // };
+    // var calculateTotals = function() {
+    //     var total = 0
+    //     for (var i = 0; i < $scope.items.length; i++) {
+    //         total += $scope.items[i].price * $scope.items[i].quantity;
+    //     }
+    //     $scope.bill.totalCart = total;
+    //     $scope.bill.discount = total > 100 ? 10 : 0;
+    //     $scope.bill.subtotal = total - $scope.bill.discount;
+    // };
+
+    // function calculateDiscount(newValue, oldValue, scope) {
+    //     $scope.bill.discount = newValue > 100 ? 10 : 0;
+    // }
+    // $scope.$watch('items', calculateTotals, true);
+    $scope.$watch(function() {
+        var total = 0
         for (var i = 0; i < $scope.items.length; i++) {
             total += $scope.items[i].price * $scope.items[i].quantity;
         }
-        return total;
-    };
-
-    $scope.subtotal = function() {
-        return $scope.totalCart() - $scope.bill.discount;
-    };
-
-    function calculateDiscount(newValue, oldValue, scope) {
-        $scope.bill.discount = newValue > 100 ? 10 : 0;
-    }
-    $scope.$watch($scope.totalCart, calculateDiscount);
+        $scope.bill.totalCart = total;
+        $scope.bill.discount = total > 100 ? 10 : 0;
+        $scope.bill.subtotal = total - $scope.bill.discount;
+    })
 }]);

@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Cart</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
-    <!-- <script src="js/angular.js"></script> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script> -->
+    <script src="js/angular.js"></script>
     <script src="js/controllers.js"></script>
 </head>
 
@@ -19,9 +19,9 @@
         <span>{{item.price * item.quantity | currency}}</span>
         <!-- <button ng-click="remove($index)">Remove</button> -->
     </div>
-    <div>Total: {{totalCart() | currency}}</div>
+    <div>Total: {{bill.totalCart | currency}}</div>
     <div>Discount: {{bill.discount | currency}}</div>
-    <div>Subtotal: {{subtotal() | currency}}</div>
+    <div>Subtotal: {{bill.subtotal | currency}}</div>
 </body>
 
 </html>
